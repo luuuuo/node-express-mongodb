@@ -2,11 +2,11 @@
 
 docker pull mongo:latest
 
-docker run -itd --name nodejsProject -p 27017:27017 mongo --auth
+docker run -itd --name mongo -p 27017:27017 mongo --auth
 
 进入镜像配置：
 
-docker exec -it nodejsProject mongosh admin
+docker exec -it mongo mongosh admin
 
 db.createUser(
   {
@@ -17,8 +17,6 @@ db.createUser(
 )
 
 db.auth('admin','admin')
-
-
 
 1.数据库用户角色：read、readWrite;
 
@@ -32,6 +30,11 @@ db.auth('admin','admin')
 
 6.超级用户角色：root
 
+db.createCollection("users")
+
+db.users.insertOne({name:'luuuuo'})
+
+db.users.find()
 
 # 项目新知
 

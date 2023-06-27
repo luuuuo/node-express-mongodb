@@ -3,6 +3,18 @@ var router = express.Router();
 var model = require('../model');
 var moment = require('moment');
 
+router.get('/test', function(req, res, next) {
+  var username = req.session.username || ''
+  model.connect(function(db){
+    db.collection('users').find().toArray(function(err, docs){
+      console.log('用户列表', docs)
+      res.render('index', {title: 'Express test'})
+      res.render('index', { username: username});
+    })
+  })
+});
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var username = req.session.username || ''

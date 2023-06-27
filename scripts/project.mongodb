@@ -1,0 +1,10 @@
+// MongoDB Playground
+const database = 'project';
+const articles = 'articles';
+const users = 'users';
+
+use(database);
+// db.createCollection(articles);
+db.createCollection(users);
+db.users.insertOne({name:'geek'});
+db.users.find();

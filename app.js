@@ -33,10 +33,11 @@ app.use(session({
 app.get('*', function(req, res, next) {
   var username = req.session.username
   var path = req.path
-  console.log('session', username)
+  console.log('username in session', username)
+  // 其他页面都会携带session
   if (path != '/login' && path != '/regist') {
     if (!username) {
-      res.redirect('/login')
+      // res.redirect('/login')
     }
   }
   next()
